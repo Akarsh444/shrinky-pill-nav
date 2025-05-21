@@ -36,7 +36,7 @@ const NavbarDropdown = ({ item, isMobile = false, isCompact = false }: NavbarDro
           "flex items-center justify-between transition-all duration-200",
           isMobile ? "w-full text-left p-3" : "px-4 py-2",
           isCompact ? "text-sm" : "text-base",
-          "hover:text-primary focus:outline-none"
+          "text-white hover:text-gray-200 font-medium focus:outline-none"
         )}
         aria-expanded={isOpen}
       >
@@ -57,19 +57,19 @@ const NavbarDropdown = ({ item, isMobile = false, isCompact = false }: NavbarDro
             ? "mt-1 w-full"
             : "absolute left-0 min-w-[200px] shadow-lg rounded-md",
           isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 invisible",
-          isCompact && !isMobile ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md" : "bg-white dark:bg-gray-900"
+          isCompact && !isMobile ? "bg-blue-700/90 dark:bg-blue-800/90 backdrop-blur-md" : "bg-blue-700 dark:bg-blue-800"
         )}
       >
         <div className={cn(
           "py-2",
-          !isMobile && "border border-gray-200 dark:border-gray-700 rounded-md"
+          !isMobile && "border border-blue-600 dark:border-blue-700 rounded-md"
         )}>
           {item.dropdown?.map((subItem, idx) => (
             <a
               key={idx}
               href={subItem.href}
               className={cn(
-                "block transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800",
+                "block transition-colors duration-200 text-white hover:bg-blue-600 dark:hover:bg-blue-700",
                 isMobile ? "p-3" : "px-4 py-2",
                 isCompact ? "text-sm" : "text-base"
               )}

@@ -1,36 +1,46 @@
 
 import { useState, useEffect } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Heart, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import NavbarDropdown from "./NavbarDropdown";
 import NavbarLink from "./NavbarLink";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Navigation data structure
+  // Navigation data structure for an NGO website
   const navItems = [
+    { label: "Home", href: "#" },
     { 
-      label: "Products", 
+      label: "About Us", 
       href: "#", 
       dropdown: [
-        { label: "Feature One", href: "#feature-one" },
-        { label: "Feature Two", href: "#feature-two" },
-        { label: "Feature Three", href: "#feature-three" },
+        { label: "Our Mission", href: "#our-mission" },
+        { label: "Our Team", href: "#our-team" },
+        { label: "Our History", href: "#our-history" },
       ] 
     },
     { 
-      label: "Services", 
+      label: "Programs", 
       href: "#", 
       dropdown: [
-        { label: "Service One", href: "#service-one" },
-        { label: "Service Two", href: "#service-two" },
-        { label: "Service Three", href: "#service-three" },
+        { label: "Education", href: "#education" },
+        { label: "Healthcare", href: "#healthcare" },
+        { label: "Community Development", href: "#community" },
       ] 
     },
-    { label: "About", href: "#about" },
+    { 
+      label: "Get Involved", 
+      href: "#", 
+      dropdown: [
+        { label: "Volunteer", href: "#volunteer" },
+        { label: "Partner With Us", href: "#partner" },
+        { label: "Fundraise", href: "#fundraise" },
+      ] 
+    },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -76,14 +86,17 @@ const Navbar = () => {
           className={cn(
             "mx-auto transition-all duration-300",
             isScrolled 
-              ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md max-w-fit rounded-full px-6" 
-              : "bg-white dark:bg-gray-900 container"
+              ? "bg-blue-700/90 dark:bg-blue-800/90 backdrop-blur-md shadow-md max-w-fit rounded-full px-6" 
+              : "bg-blue-700 dark:bg-blue-800 container"
           )}
         >
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="/" className="text-xl font-bold text-primary">MyLogo</a>
+              <a href="/" className="text-xl font-bold text-white flex items-center">
+                <span className="mr-2 font-serif">NGO</span>
+                <span className="text-sm font-light">Empowering Communities</span>
+              </a>
             </div>
             
             {/* Desktop Navigation */}
@@ -100,15 +113,25 @@ const Navbar = () => {
                     key={index} 
                     href={item.href} 
                     isCompact={isScrolled}
+                    className="text-white"
                   >
                     {item.label}
                   </NavbarLink>
                 )
               ))}
               
+              {/* Donate Button */}
+              <Button 
+                variant="secondary"
+                className="ml-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold"
+                size={isScrolled ? "sm" : "default"}
+              >
+                <Heart className="mr-1 h-4 w-4" /> Donate
+              </Button>
+              
               <button 
                 onClick={toggleNavbarVisibility}
-                className="ml-4 p-2 text-gray-500 hover:text-primary transition-colors"
+                className="ml-4 p-2 text-white hover:text-gray-200 transition-colors"
                 aria-label="Hide navbar"
               >
                 <X size={18} />
@@ -117,9 +140,17 @@ const Navbar = () => {
             
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
+              <Button 
+                variant="secondary"
+                className="mr-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold"
+                size="sm"
+              >
+                <Heart className="mr-1 h-4 w-4" /> Donate
+              </Button>
+              
               <button 
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-md text-gray-500 hover:text-primary transition-colors"
+                className="p-2 rounded-md text-white hover:text-gray-200 transition-colors"
                 aria-label="Toggle mobile menu"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -144,6 +175,7 @@ const Navbar = () => {
                         href={item.href} 
                         isMobile={true}
                         isCompact={isScrolled}
+                        className="text-white"
                       >
                         {item.label}
                       </NavbarLink>
@@ -152,7 +184,7 @@ const Navbar = () => {
                 ))}
                 <button 
                   onClick={toggleNavbarVisibility}
-                  className="flex items-center justify-center w-full p-2 text-gray-500 hover:text-primary transition-colors"
+                  className="flex items-center justify-center w-full p-2 text-white hover:text-gray-200 transition-colors"
                 >
                   Hide Navbar <X size={18} className="ml-2" />
                 </button>
