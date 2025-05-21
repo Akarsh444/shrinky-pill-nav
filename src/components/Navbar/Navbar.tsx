@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ChevronDown, Heart, Menu, X } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import NavbarDropdown from "./NavbarDropdown";
 import NavbarLink from "./NavbarLink";
@@ -68,10 +68,10 @@ const Navbar = () => {
       {/* Navbar placeholder when hidden */}
       {isHidden && (
         <div 
-          className="fixed top-4 right-4 z-50 bg-primary p-2 rounded-full shadow-lg cursor-pointer transition-all duration-300 hover:scale-110"
+          className="fixed top-4 right-4 z-50 bg-teal-500 p-2 rounded-full shadow-lg cursor-pointer transition-all duration-300 hover:scale-110"
           onClick={toggleNavbarVisibility}
         >
-          <Menu className="text-primary-foreground" />
+          <Menu className="text-white" />
         </div>
       )}
       
@@ -86,8 +86,8 @@ const Navbar = () => {
           className={cn(
             "mx-auto transition-all duration-300",
             isScrolled 
-              ? "bg-blue-700/90 dark:bg-blue-800/90 backdrop-blur-md shadow-md max-w-fit rounded-full px-6" 
-              : "bg-blue-700 dark:bg-blue-800 container"
+              ? "bg-slate-800/80 backdrop-blur-md shadow-md max-w-fit rounded-full px-6" 
+              : "bg-slate-800 container"
           )}
         >
           <div className="flex items-center justify-between">
@@ -123,7 +123,7 @@ const Navbar = () => {
               {/* Donate Button */}
               <Button 
                 variant="secondary"
-                className="ml-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold"
+                className="ml-4 bg-teal-500 hover:bg-teal-400 text-white font-bold"
                 size={isScrolled ? "sm" : "default"}
               >
                 <Heart className="mr-1 h-4 w-4" /> Donate
@@ -142,7 +142,7 @@ const Navbar = () => {
             <div className="md:hidden flex items-center">
               <Button 
                 variant="secondary"
-                className="mr-4 bg-yellow-500 hover:bg-yellow-400 text-gray-900 font-bold"
+                className="mr-4 bg-teal-500 hover:bg-teal-400 text-white font-bold"
                 size="sm"
               >
                 <Heart className="mr-1 h-4 w-4" /> Donate

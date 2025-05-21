@@ -57,19 +57,19 @@ const NavbarDropdown = ({ item, isMobile = false, isCompact = false }: NavbarDro
             ? "mt-1 w-full"
             : "absolute left-0 min-w-[200px] shadow-lg rounded-md",
           isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 invisible",
-          isCompact && !isMobile ? "bg-blue-700/90 dark:bg-blue-800/90 backdrop-blur-md" : "bg-blue-700 dark:bg-blue-800"
+          isCompact && !isMobile ? "bg-slate-700/90 dark:bg-slate-800/90 backdrop-blur-md" : "bg-slate-700 dark:bg-slate-800"
         )}
       >
         <div className={cn(
           "py-2",
-          !isMobile && "border border-blue-600 dark:border-blue-700 rounded-md"
+          !isMobile && "border border-slate-600 dark:border-slate-700 rounded-md"
         )}>
           {item.dropdown?.map((subItem, idx) => (
             <a
               key={idx}
               href={subItem.href}
               className={cn(
-                "block transition-colors duration-200 text-white hover:bg-blue-600 dark:hover:bg-blue-700",
+                "block transition-colors duration-200 text-white hover:bg-slate-600 dark:hover:bg-slate-700",
                 isMobile ? "p-3" : "px-4 py-2",
                 isCompact ? "text-sm" : "text-base"
               )}
